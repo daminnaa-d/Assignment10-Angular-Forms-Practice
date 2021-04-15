@@ -1,0 +1,67 @@
+<h1>Template Driven form</h1>
+<form #personalDataForm="ngForm">
+  <p>
+    <label for="firstname">First Name</label>
+    <input type="text" id="firstname" name="firstname" ngModel>
+  </p>
+
+  <p>
+    <label for="lastname">Last Name</label>
+    <input type="text" id="lastname" name="lastname" ngModel>
+  </p>
+
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email"  ngModel>
+  </p>
+
+  <p>
+    <label for="gender">Geneder</label>
+    <input type="radio" value="male" id="gender" name="gender" ngModel> Male
+    <input type="radio" value="female" id="gender" name="gender" ngModel> Female
+  </p>
+
+  <p>
+    <label for="region">Region</label>
+    <select name="region" id="region">
+      <option selected="" value=""></option>
+      <option [ngValue]="c.id" *ngFor="let c of regionList">{{c.name}}</option>
+    </select>
+  </p>
+
+  <div ngModelGroup="address">
+  <p>
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" ngModel>
+  </p>
+  <p>
+    <label for="street">Street</label>
+    <input type="text" id="street" name="street" ngModel>
+  </p>
+  <p>
+    <label for="pincode">Pin Code</label>
+    <input type="text" id="pincode" name="pincode"  ngModel>
+  </p>
+  </div>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+
+  <p>
+    <button type="button" (click)="changeRegion()">Change Region</button>
+    <button type="button" (click)="setDefaults()">Set Defaults</button>
+    <button type="button" (click)="patchValue()">Patch Value</button>
+    <button type="button" (click)="changeAddress()">Change Address</button>
+    <button type="button" (click)="reset()">Reset</button>
+    <button type="button" (click)="resetForm()">Reset Form</button>
+  </p>
+
+  <b>valid</b> {{personalDataForm.valid}}
+  <b>touched</b> {{personalDataForm.touched}}
+  <b>pristine</b> {{personalDataForm.pristine}}
+  <b>dirty</b> {{personalDataForm.dirty}}
+
+</form>
+
+
